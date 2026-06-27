@@ -193,7 +193,7 @@ trojan://eeb6823c-b926-4ea2-866a-5542edd26e59@211.49.57.161:443?sni=hhcm.hhxaf.c
 trojan://eeb6823c-b926-4ea2-866a-5542edd26e59@211.49.57.179:443?sni=tjsp.hhxaf.cc.cd&allowInsecure=1#电报群：https://t.me/vvkj11
 trojan://eeb6823c-b926-4ea2-866a-5542edd26e59@211.49.57.175:443?sni=hhcm.hhxaf.cc.cd&allowInsecure=1#日期：06-27
 trojan://eeb6823c-b926-4ea2-866a-5542edd26e59@69.63.212.210:443?sni=tjsp.hhxaf.cc.cd&allowInsecure=1#免费VPN：https://tt.vg/OWeaF
-trojan://humanity@104.20.6.134:443?sni=www.calmloud.com&allowInsecure=1#🏳️_未知_5
+trojan://humanity@104.20.6.134:443?sni=www.calmloud.com&type=ws&path=/assignment&host=www.calmloud.com#美国/San Francisco/United States/San Francisco-3
 trojan://humanity@172.64.146.198:443?sni=www.gossipglove.com&allowInsecure=1#🏳️_未知_6
 trojan://humanity@104.25.112.190:443?sni=www.gossipglove.com&allowInsecure=1#🏳️_未知_7
 trojan://humanity@162.159.17.189:443?sni=www.multiplydose.com&allowInsecure=1#🏳️_未知_8
@@ -215,7 +215,7 @@ vless://2b184ae3-e58c-4202-82b1-9d944aa35333@188.114.97.10:2086?type=ws&allowIns
 vless://090e5985-bbeb-4400-8278-d3a8e9ae5d92@162.159.156.214:8880?type=ws&allowInsecure=1&path=/pyip=ProxyIP.JP.CMLiussss.net&host=shy-star-7967.311-f0b.workers.dev#🏳️_未知_27
 vless://f4e6476f-40d0-40cb-841f-cc2f6909ff20@www.gov.ua:8880?type=ws&allowInsecure=1&path=/pyip=ProxyIP.SG.CMLiussss.net&host=calm-haze-d105.21-7cd.workers.dev#🏳️_未知_28
 vless://615b457e-fb2a-4bb7-854b-99c0e2c16b2a@108.162.198.251:2087?type=ws&security=tls&sni=sd.cbb.j3.ink&allowInsecure=1&path=/intro&host=sd.cbb.j3.ink#🏳️_未知_29
-vless://5a4d9f40-56db-402a-9fbc-31c9229bdcf6@skk.moe:8880?type=ws&allowInsecure=1&path=/pyip=ProxyIP.US.CMLiussss.net&host=floral-resonance-4baf.468.workers.dev#🏳️_未知_30
+vless://31f345f3-b8eb-4ca6-8b14-bb555ae2c1f9@skk.moe:8880?type=ws&path=/pyip=ProxyIP.KR.CMLiussss.net&host=tiny-feather-4c41.227.workers.dev#美国/San Francisco/United States/San Francisco-12
 vless://a62a4c64-2270-4d41-828b-2591906c48ba@104.16.106.213:8880?type=ws&allowInsecure=1&path=/pyip=ProxyIP.SG.CMLiussss.net&host=sweet-disk-a026.253-54b.workers.dev#🏳️_未知_31
 vless://615b457e-fb2a-4bb7-854b-99c0e2c16b2a@162.159.43.30:2096?type=ws&security=tls&sni=sd.cbb.j3.ink&allowInsecure=1&path=/cn/data/images&host=sd.cbb.j3.ink#🏳️_未知_36
 vless://18a7834f-bf89-4c87-ad57-49927a56deed@www.baipiao.eu.org:8880?type=ws&allowInsecure=1&path=/pyip=ProxyIP.SG.CMLiussss.net&host=holy-violet-858e.471.workers.dev#🏳️_未知_40
@@ -223,7 +223,7 @@ vless://a5c05c1e-aa68-443f-8598-09800244bd4b@192.71.82.2:443?type=ws&security=tl
 vless://615b457e-fb2a-4bb7-854b-99c0e2c16b2a@162.159.38.68:2083?type=ws&security=tls&sni=sd.cbb.j3.ink&allowInsecure=1&path=/code/downloads/anime&host=sd.cbb.j3.ink#🏳️_未知_52
 trojan://MiTiVPN@45.131.4.118:443?sni=95r.ir&allowInsecure=1#🇳🇱_荷兰_53
 vless://4c1b83e4-5ade-46a8-966d-1eeb7a8dcc65@cloudflare.182682.xyz:443?type=ws&security=tls&sni=wz1.fum.ccwu.cc&allowInsecure=1&path=/proxyip=sjc.o00o.ooo&host=wz1.fum.ccwu.cc#🏳️_未知_55
-vless://d9307ab3-1ed0-4b6d-bfd0-e104c7ccc25a@sv2.azparadox.ir:8880?type=ws&sni=azsv2.ir5ive.ir&allowInsecure=1&path=/&host=azsv2.ir5ive.ir#🇮🇷_伊朗_56
+vless://d9307ab3-1ed0-4b6d-bfd0-e104c7ccc25a@sv2.azparadox.ir:8880?type=ws&path=/&host=azsv2.ir5ive.ir#伊朗/Iran
 vless://86c50e3a-5b87-49dd-bd20-03c7f2735e40@www.udemy.com:2095?type=ws&sni=cnmfangbinxing.cnmfangbinxing-i.workers.dev&allowInsecure=1&path=/&host=cnmfangbinxing.cnmfangbinxing-i.workers.dev#🏳️_未知_57
 vless://9217afcd-026e-781f-1abc-c06efabd2328@zzjp1.ainivp.com:13402?security=tls&sni=www.microsoft.com&allowInsecure=1&flow=xtls-rprx-vision#🇯🇵_日本_58
 vless://3e7cede4-721a-4807-b0a2-5fe6586af907@45.194.10.125:8443?security=tls&sni=storage.yandex.net&allowInsecure=1&flow=xtls-rprx-vision#🇱🇹_立陶宛_59
@@ -240,13 +240,13 @@ vless://44c77053-d3aa-413f-8763-41c6c68de377@38.244.21.144:443?security=tls&sni=
 vless://3ef170be-05d0-479c-9753-aa2f860964ea@130.49.190.234:443?security=tls&sni=cloudflare.com&allowInsecure=1&flow=xtls-rprx-vision#🇷🇺_俄罗斯_71
 vless://580d81f8-4f30-49d6-ad90-59fb4a850313@tw3.miyazono-kaori.com:443?security=tls&sni=dlcdnets.asus.com&allowInsecure=1&flow=xtls-rprx-vision#🇹🇼_台湾_72
 trojan://7e70223b-f331-41d5-9313-02b8d2df2885@d1.catcat321.com:58995?sni=d.usj1.cat.bilibili.com&allowInsecure=1#🇯🇵_日本_73
-vless://55a5044d-5b35-405f-971c-ea7aacaafcb4@185.137.157.72:443?security=tls&sni=www.nvidia.com&allowInsecure=1&flow=xtls-rprx-vision#🇩🇪_德国_75
+vless://55a5044d-5b35-405f-971c-ea7aacaafcb4@185.137.157.72:443?security=tls&sni=www.nvidia.com&flow=xtls-rprx-vision#德国/Germany-3
 vless://ea1c1e20-7263-4b08-a01b-690b29af66b3@103.76.85.138:443?security=tls&sni=www.apple.com&allowInsecure=1&flow=xtls-rprx-vision#🇯🇵_日本_76
 trojan://63872b0d-87dd-4474-b690-92773af2922e@d1.catcat321.com:42531?sni=d.usj1.cat.bilibili.com&allowInsecure=1#🇯🇵_日本_77
 vless://8c05e68a-2fe0-4c0d-9be5-b7d2df9bb2a3@95.85.230.241:443?security=tls&sni=gefast.truetunnel.xyz&allowInsecure=1&flow=xtls-rprx-vision#🇨🇿_捷克_78
 vless://f6f5ce85-7473-4b92-a3a8-86c06886497b@116.206.93.44:443?security=tls&sni=www.apple.com&allowInsecure=1&flow=xtls-rprx-vision#🇯🇵_日本_79
 trojan://7e70223b-f331-41d5-9313-02b8d2df2885@d1.catcat321.com:56168?sni=d.usj1.cat.bilibili.com&allowInsecure=1#🇯🇵_日本_80
-trojan://7e70223b-f331-41d5-9313-02b8d2df2885@d1.catcat321.com:50888?sni=d.usj1.cat.bilibili.com&allowInsecure=1#🇯🇵_日本_81
+trojan://7e70223b-f331-41d5-9313-02b8d2df2885@d1.catcat321.com:50888?sni=d.usj1.cat.bilibili.com&allowInsecure=1#日本/Japan
 trojan://7e70223b-f331-41d5-9313-02b8d2df2885@d1.catcat321.com:58868?sni=d.usj1.cat.bilibili.com&allowInsecure=1#🇯🇵_日本_82
 trojan://7e70223b-f331-41d5-9313-02b8d2df2885@d1.catcat321.com:57106?sni=d.usj1.cat.bilibili.com&allowInsecure=1#🇯🇵_日本_83
 vless://98fdfffe-28d8-4580-a4d1-2d7e15bdde4a@45.131.186.103:443?security=tls&sni=cdn.jsdelivr.net&allowInsecure=1&flow=xtls-rprx-vision#🇷🇺_俄罗斯_84
@@ -293,7 +293,7 @@ trojan://4f4d1167-ef14-4304-9bce-0740472503ef@103.177.136.45:47909?sni=is.01.nai
 trojan://4f4d1167-ef14-4304-9bce-0740472503ef@103.177.136.45:45619?sni=fr.01.naiun.bilibili.com&allowInsecure=1#🇭🇰_香港_126
 trojan://4f4d1167-ef14-4304-9bce-0740472503ef@103.177.136.42:45619?sni=fr.01.naiun.bilibili.com&allowInsecure=1#🇭🇰_香港_127
 trojan://63872b0d-87dd-4474-b690-92773af2922e@kkvlvvq-a.catcat321.com:20035?sni=hk.catxstar.com&allowInsecure=1#🇺🇸_美国_128
-vless://e6a037ff-3908-4bf9-b3e7-b1138da601f9@83.228.231.188:22000?security=tls&sni=www.yahoo.com&allowInsecure=1#🇨🇭_瑞士_130
+vless://e6a037ff-3908-4bf9-b3e7-b1138da601f9@83.228.231.188:22000?security=tls&sni=www.yahoo.com#瑞士/Switzerland
 vless://f3520324-2a45-4dd0-8d2b-3f5e90898949@v3.cdn.qqws1rrgrm.ewddns.net:29820?security=tls&sni=cdnjs.cloudflare.com&allowInsecure=1&flow=xtls-rprx-vision#🇭🇰_香港_131
 vless://f3520324-2a45-4dd0-8d2b-3f5e90898949@v3.cdn.qqws1rrgrm.ewddns.net:23953?security=tls&sni=cdnjs.cloudflare.com&allowInsecure=1&flow=xtls-rprx-vision#🇭🇰_香港_132
 vless://f3520324-2a45-4dd0-8d2b-3f5e90898949@v3.cdn.qqws1rrgrm.ewddns.net:23834?security=tls&sni=cdnjs.cloudflare.com&allowInsecure=1&flow=xtls-rprx-vision#🇭🇰_香港_133
@@ -441,23 +441,23 @@ hysteria2://gdubbi2zb6gdp0c8@103.251.167.168:443?sni=gettestin.xxee.ru#荷兰/Th
 hysteria2://t-me-V2RayyNGvpn@65.109.177.191:443?sni=www.oracle.com&insecure=1#芬兰/赫尔辛基/Finland/Helsinki-8
 hysteria2://00dcd873-9211-4d61-ad35-87999906e5c8@185.75.135.220:443?sni=fta.fontanvpn.com#芬兰/赫尔辛基/Finland/Helsinki-9
 hysteria2://f7cb07a0-e6f9-4d22-a60e-c61854450c89@vn2.yuntong.click:443?sni=vn2.yuntong.click#越南/胡志明市/Vietnam/Ho Chi Minh City
-vless://e7be1334-6a1d-47c0-8c9a-c7a5b8575499@147.182.183.207:443?type=xhttp&sni=yahoo.com#俄罗斯联邦/Russia
-vless://31e302aa-c0ef-4ab3-b16f-71ac8ccfb045@lastkh.mobileman1.com:4242#冰岛/凯夫拉维克/Iceland/Keflavik
-vless://10be524f-e1dc-4d1c-a256-17df1399a739@104.17.121.253:2096?type=grpc&security=tls&sni=loVELY-bATtLeNn9IH0SniS.WInDlER.Co.Uk#伊朗/Iran
-vless://7f89560c-b9f0-4c56-b3e0-1b1bdafe0b08@45.195.137.146:8443?security=tls&sni=storage.yandex.net&flow=xtls-rprx-vision#🇨🇭_CH_瑞士
-vless://7f89560c-b9f0-4c56-b3e0-1b1bdafe0b08@45.195.137.63:8443?security=tls&sni=storage.yandex.net&flow=xtls-rprx-vision#🇨🇭_CH_瑞士
-vless://52faee73-e0fe-4661-992d-67259257170f@45.206.0.43:8443?security=tls&sni=storage.yandex.net&flow=xtls-rprx-vision#🇬🇧_GB_英国
-vless://3e7cede4-721a-4807-b0a2-5fe6586af907@45.194.10.168:8443?security=tls&sni=storage.yandex.net&flow=xtls-rprx-vision#🇱🇹_LT_立陶宛
-trojan://7e70223b-f331-41d5-9313-02b8d2df2885@d1.catcat321.com:56686?sni=d.usj1.cat.bilibili.com&allowInsecure=1#🇯🇵_JP_日本->🇺🇸_US_美国
-vmess://eyJ2IjogIjIiLCAicHMiOiAi8J+HuPCfh6xfU0df5paw5Yqg5Z2hLT7wn4e68J+HuF9VU1/nvo7lm70iLCAiYWRkIjogInY0LmhkYWNkLmNvbSIsICJwb3J0IjogIjMwODA0IiwgImlkIjogImNiYjNmODc3LWQxZmItMzQ0Yy04N2E5LWQxNTNiZmZkNTQ4NCIsICJhaWQiOiAiMiIsICJzY3kiOiAiYXV0byIsICJuZXQiOiAidGNwIiwgInR5cGUiOiAibm9uZSIsICJ0bHMiOiAiIn0=
-vless://3dc541ed-c825-4372-91ee-7a15febad7d1@191.44.109.109:443?security=tls&sni=www.nvidia.com&flow=xtls-rprx-vision#🇩🇪_DE_德国
-vless://3e7cede4-721a-4807-b0a2-5fe6586af907@45.194.10.236:8443?security=tls&sni=storage.yandex.net&flow=xtls-rprx-vision#🇱🇹_LT_立陶宛
-vless://7f89560c-b9f0-4c56-b3e0-1b1bdafe0b08@45.195.137.227:8443?security=tls&sni=storage.yandex.net&flow=xtls-rprx-vision#🇨🇭_CH_瑞士
-trojan://7e70223b-f331-41d5-9313-02b8d2df2885@d1.catcat321.com:48045?sni=d.usj1.cat.bilibili.com&allowInsecure=1#🇯🇵_JP_日本->🇺🇸_US_美国
-vmess://eyJ2IjogIjIiLCAicHMiOiAi8J+HuvCfh7hfVVNf576O5Zu9IiwgImFkZCI6ICJoMy5ibm0udXcudG8iLCAicG9ydCI6ICI0NDMiLCAiaWQiOiAiMjRjY2ZjMTMtYzg2Ni00ZjUxLWFmMDQtNjgyZDlhZTk4ZjNjIiwgImFpZCI6ICIwIiwgInNjeSI6ICJhdXRvIiwgIm5ldCI6ICJ3cyIsICJ0eXBlIjogIm5vbmUiLCAidGxzIjogInRscyIsICJzbmkiOiAiaDMuYm5tLnV3LnRvIiwgImhvc3QiOiAiaDMuYm5tLnV3LnRvIiwgInBhdGgiOiAiLzI0Y2NmYzEzLWM4NjYtNGY1MS1hZjA0LTY4MmQ5YWU5OGYzYy12bSJ9
 vless://3d6518df-cab2-4840-83fa-a0d0759d1309@kzt-t14.plugvpn.ru:443?sni=kzt-t14.plugvpn.ru&flow=xtls-rprx-vision#KZ【机场推荐：https://a9a.xyz】3
 vless://fba6d1fd-0dab-428d-ae71-0e64c73a6060@log.bpminecraft.com:8880?type=ws&path=/pyip=ProxyIP.KR.CMLiussss.net&host=morning-wood-0e8a.28-63e.workers.dev#CA【机场推荐：https://a9a.xyz】10
 vless://4c1b83e4-5ade-46a8-966d-1eeb7a8dcc65@162.159.44.191:443?type=ws&security=tls&sni=wz1.fum.ccwu.cc&path=/proxyip=sjc.o00o.ooo&host=wz1.fum.ccwu.cc#US【机场推荐：https://a9a.xyz】12
 vless://4c1b83e4-5ade-46a8-966d-1eeb7a8dcc65@104.18.37.191:2087?type=ws&security=tls&sni=wz1.fum.ccwu.cc&path=/proxyip=sjc.o00o.ooo&host=wz1.fum.ccwu.cc#CA【机场推荐：https://a9a.xyz】13
 vless://a36b1024-70b2-476e-9caf-0fd644d5b9ac@fanlandv3.sorcepack.ir:52077?type=grpc&sni=yahoo.com#UN【机场推荐：https://a9a.xyz】17
 trojan://humanity@104.16.174.44:443?sni=www.ignitelimit.com&type=ws&path=/assignment#CA【机场推荐：https://a9a.xyz】18
+vless://e7be1334-6a1d-47c0-8c9a-c7a5b8575499@147.182.183.207:443?type=xhttp&sni=yahoo.com#俄罗斯联邦/Russia_2
+vless://31e302aa-c0ef-4ab3-b16f-71ac8ccfb045@lastkh.mobileman1.com:4242#冰岛/凯夫拉维克/Iceland/Keflavik_2
+vless://10be524f-e1dc-4d1c-a256-17df1399a739@104.17.121.253:2096?type=grpc&security=tls&sni=loVELY-bATtLeNn9IH0SniS.WInDlER.Co.Uk#伊朗/Iran_2
+vless://7f89560c-b9f0-4c56-b3e0-1b1bdafe0b08@45.195.137.146:8443?security=tls&sni=storage.yandex.net&flow=xtls-rprx-vision#🇨🇭_CH_瑞士
+vless://7f89560c-b9f0-4c56-b3e0-1b1bdafe0b08@45.195.137.63:8443?security=tls&sni=storage.yandex.net&flow=xtls-rprx-vision#🇨🇭_CH_瑞士_2
+vless://52faee73-e0fe-4661-992d-67259257170f@45.206.0.43:8443?security=tls&sni=storage.yandex.net&flow=xtls-rprx-vision#🇬🇧_GB_英国
+vless://3e7cede4-721a-4807-b0a2-5fe6586af907@45.194.10.168:8443?security=tls&sni=storage.yandex.net&flow=xtls-rprx-vision#🇱🇹_LT_立陶宛
+trojan://7e70223b-f331-41d5-9313-02b8d2df2885@d1.catcat321.com:56686?sni=d.usj1.cat.bilibili.com&allowInsecure=1#🇯🇵_JP_日本->🇺🇸_US_美国
+vmess://eyJ2IjogIjIiLCAicHMiOiAi8J+HuPCfh6xfU0df5paw5Yqg5Z2hLT7wn4e68J+HuF9VU1/nvo7lm70iLCAiYWRkIjogInY0LmhkYWNkLmNvbSIsICJwb3J0IjogIjMwODA0IiwgImlkIjogImNiYjNmODc3LWQxZmItMzQ0Yy04N2E5LWQxNTNiZmZkNTQ4NCIsICJhaWQiOiAiMiIsICJzY3kiOiAiYXV0byIsICJuZXQiOiAidGNwIiwgInR5cGUiOiAibm9uZSIsICJ0bHMiOiAiIn0=
+vless://3dc541ed-c825-4372-91ee-7a15febad7d1@191.44.109.109:443?security=tls&sni=www.nvidia.com&flow=xtls-rprx-vision#🇩🇪_DE_德国
+vless://3e7cede4-721a-4807-b0a2-5fe6586af907@45.194.10.236:8443?security=tls&sni=storage.yandex.net&flow=xtls-rprx-vision#🇱🇹_LT_立陶宛_2
+vless://7f89560c-b9f0-4c56-b3e0-1b1bdafe0b08@45.195.137.227:8443?security=tls&sni=storage.yandex.net&flow=xtls-rprx-vision#🇨🇭_CH_瑞士_3
+trojan://7e70223b-f331-41d5-9313-02b8d2df2885@d1.catcat321.com:48045?sni=d.usj1.cat.bilibili.com&allowInsecure=1#🇯🇵_JP_日本->🇺🇸_US_美国_2
+vmess://eyJ2IjogIjIiLCAicHMiOiAi8J+HuvCfh7hfVVNf576O5Zu9IiwgImFkZCI6ICJoMy5ibm0udXcudG8iLCAicG9ydCI6ICI0NDMiLCAiaWQiOiAiMjRjY2ZjMTMtYzg2Ni00ZjUxLWFmMDQtNjgyZDlhZTk4ZjNjIiwgImFpZCI6ICIwIiwgInNjeSI6ICJhdXRvIiwgIm5ldCI6ICJ3cyIsICJ0eXBlIjogIm5vbmUiLCAidGxzIjogInRscyIsICJzbmkiOiAiaDMuYm5tLnV3LnRvIiwgImhvc3QiOiAiaDMuYm5tLnV3LnRvIiwgInBhdGgiOiAiLzI0Y2NmYzEzLWM4NjYtNGY1MS1hZjA0LTY4MmQ5YWU5OGYzYy12bSJ9

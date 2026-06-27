@@ -16,10 +16,11 @@ def dedup_key(proxy: Dict) -> str:
 
 
 def deduplicate(proxies: List[Dict]) -> List[Dict]:
-    """Deduplicate proxy list by server:port:type.
+    """Deduplicate proxy list by server:port:type and ensure unique names.
 
     When duplicates are found, keeps the one with highest _credit (lowest number = L1).
     If credits are equal, keeps the first occurrence.
+    After dedup, ensures all names are unique (required by SingBox/Hiddify).
     """
     seen: Dict[str, Dict] = {}
     duplicates_removed = 0
@@ -28,7 +29,6 @@ def deduplicate(proxies: List[Dict]) -> List[Dict]:
         key = dedup_key(proxy)
         if key in seen:
             existing = seen[key]
-            # Keep the one with better credit (lower number = higher priority)
             new_credit = proxy.get("_credit", 3)
             old_credit = existing.get("_credit", 3)
             if new_credit < old_credit:
@@ -43,7 +43,29 @@ def deduplicate(proxies: List[Dict]) -> List[Dict]:
     else:
         logger.info(f"Deduplication: no duplicates found, {len(seen)} unique nodes")
 
-    return list(seen.values())
+    # Ensure unique names (required by SingBox/Hiddify for endpoint tags)
+    result = _ensure_unique_names(list(seen.values()))
+    return result
+
+
+def _ensure_unique_names(proxies: List[Dict]) -> List[Dict]:
+    """Make all proxy names unique by appending suffix for duplicates."""
+    name_count: Dict[str, int] = {}
+    rename_count = 0
+
+    for proxy in proxies:
+        name = proxy.get("name", "Unknown")
+        if name in name_count:
+            name_count[name] += 1
+            new_name = f"{name}_{name_count[name]}"
+            proxy["name"] = new_name
+            rename_count += 1
+        else:
+            name_count[name] = 1
+
+    if rename_count > 0:
+        logger.info(f"Name uniqueness: renamed {rename_count} duplicate names")
+    return proxies
 
 
 def deduplicate_by_hash(uris: List[str]) -> List[str]:

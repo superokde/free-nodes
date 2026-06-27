@@ -71,14 +71,21 @@ def write_all_yaml(proxies: List[Dict], output_dir: Path) -> tuple:
     - Inline YAML format for proxy entries
     - 4-space indentation
     - No Python repr strings for nested fields
-    - Includes proxy-groups with url-test + fallback
+    - Filters out types unsupported by Clash Premium kernel
     """
     filepath = output_dir / "all.yaml"
     now = datetime.now(TZ_BEIJING).strftime("%Y-%m-%d %H:%M:%S")
 
+    # Filter: Premium-compatible types for max OpenClash compatibility
+    # Clash Premium: ss, ssr, vmess, trojan
+    # (vless/hysteria2/tuic are Meta-only, excluded for safety)
+    premium_types = {"ss", "ssr", "vmess", "trojan"}
+    valid = [p for p in proxies if p.get("type", "").lower() in premium_types]
+    excluded = len(proxies) - len(valid)
+
     lines = []
     lines.append(f"# Free Node Aggregator | Updated: {now} Beijing Time")
-    lines.append(f"# Total nodes: {len(proxies)}")
+    lines.append(f"# Total: {len(valid)} proxies" + (f" ({excluded} non-Clash types excluded)" if excluded else ""))
     lines.append("")
 
     # Clash config header
@@ -115,8 +122,8 @@ def write_all_yaml(proxies: List[Dict], output_dir: Path) -> tuple:
     # Proxies section — inline format per clash-subscription-format-spec
     lines.append("proxies:")
     node_names = []
-    for proxy in proxies:
-        yaml_line = proxy_to_clash_yaml(proxy)
+    for proxy in valid:
+        yaml_line = proxy_to_clash_yaml(proxy, clean_for_kernel=True)
         if yaml_line:
             lines.append(f"    - {yaml_line}")
             node_names.append(proxy.get("name", ""))
@@ -124,10 +131,6 @@ def write_all_yaml(proxies: List[Dict], output_dir: Path) -> tuple:
     lines.append("")
 
     # Proxy groups
-    # Split nodes by credit level
-    l1_names = [p.get("name", "") for p in proxies if _clean_name(p.get("name", ""))]
-    l2_l3_names = l1_names  # all nodes together for simplicity
-
     lines.extend(_generate_proxy_groups(node_names))
     lines.append("")
 
@@ -139,7 +142,7 @@ def write_all_yaml(proxies: List[Dict], output_dir: Path) -> tuple:
     with open(filepath, "w", encoding="utf-8") as f:
         f.write(content)
 
-    logger.info(f"Generated {filepath.name}: {len(node_names)} proxies")
+    logger.info(f"Generated {filepath.name}: {len(node_names)} proxies (Premium+Meta compatible)")
     return filepath, len(node_names)
 
 
@@ -633,29 +636,29 @@ def _dict_to_yaml(d: Dict) -> str:
     return "{ " + ", ".join(parts) + " }"
 
 
-def _yaml_list(items: List[str], max_items: int = 20) -> str:
-    """Format a list of strings as Clash YAML inline list.
-
-    Limits to max_items to keep url-test/fallback groups performant.
-    """
+def _yaml_list(items: List[str], max_items: int = 50) -> str:
+    """Format a list of strings as Clash YAML inline list."""
     clean = [_clean_name(i) for i in items if i]
     limited = clean[:max_items]
     return "[" + ", ".join([f"'{n}'" for n in limited]) + "]"
 
 
 def _generate_proxy_groups(node_names: List[str]) -> List[str]:
-    """Generate Clash proxy-groups section with valid YAML syntax."""
+    """Generate Clash proxy-groups section with valid YAML syntax.
+
+    Keeps groups limited for OpenClash compatibility (large groups crash kernel).
+    """
     clean_names = [_clean_name(n) for n in node_names if n]
 
-    # url-test: first 20 nodes for auto selection
-    auto_proxies = _yaml_list(clean_names, max_items=20)
-    # fallback: first 20 nodes
-    fb_proxies = _yaml_list(clean_names, max_items=20)
-    # select: special groups + first 20 nodes
-    select_names = ["'🚀 自动选择'", "'🔄 故障转移'"]
-    for n in clean_names[:20]:
-        select_names.append(f"'{n}'")
-    select_proxies = "[" + ", ".join(select_names) + "]"
+    # url-test: first 50 nodes — large enough for diversity, small enough for kernel
+    auto_proxies = _yaml_list(clean_names, max_items=50)
+    # fallback: first 50 nodes
+    fb_proxies = _yaml_list(clean_names, max_items=50)
+    # select: special groups + first 50 named nodes
+    select_parts = ["'🚀 自动选择'", "'🔄 故障转移'", "'DIRECT'"]
+    for n in clean_names[:50]:
+        select_parts.append(f"'{n}'")
+    select_proxies = "[" + ", ".join(select_parts) + "]"
 
     lines = [
         "proxy-groups:",
