@@ -20,7 +20,7 @@ TZ_BEIJING = timezone(timedelta(hours=8))
 
 
 def generate_all_outputs(proxies: List[Dict], output_dir: Path) -> Dict[str, int]:
-    """Generate all three output files. Returns {filename: node_count}."""
+    """Generate all output files. Returns {filename: node_count}."""
     stats = {}
 
     # all.txt — V2Ray subscription format
@@ -34,6 +34,10 @@ def generate_all_outputs(proxies: List[Dict], output_dir: Path) -> Dict[str, int
     # provider.yaml — Clash proxy-provider format
     provider_path, provider_count = write_provider_yaml(proxies, output_dir)
     stats[provider_path.name] = provider_count
+
+    # hiddify.yaml — Pure proxy list for Hiddify/OpenClash compatibility
+    hiddify_path, hiddify_count = write_pure_proxies(proxies, output_dir)
+    stats[hiddify_path.name] = hiddify_count
 
     return stats
 
@@ -219,6 +223,41 @@ def write_provider_yaml(proxies: List[Dict], output_dir: Path) -> tuple:
     return filepath, len(proxies)
 
 
+def write_pure_proxies(proxies: List[Dict], output_dir: Path) -> tuple:
+    """Write a pure proxies: list without config wrapper.
+
+    Compatible with Hiddify and OpenClash that need only the proxy list.
+    Per the format spec: Hiddify parses JSON → V2Ray → Clash YAML.
+    Pure proxy list ensures clean yaml.Unmarshal for broad compatibility.
+    """
+    filepath = output_dir / "hiddify.yaml"
+    now = datetime.now(TZ_BEIJING).strftime("%Y-%m-%d %H:%M:%S")
+
+    # Filter out proxy types not supported by Clash kernel
+    clash_supported = {"vmess", "vless", "trojan", "ss", "ssr", "hysteria2", "hysteria", "tuic"}
+    valid = [p for p in proxies if p.get("type", "").lower() in clash_supported]
+
+    lines = [
+        f"# Hiddify/Clash compatible proxy list | Updated: {now} BJT",
+        f"# Total: {len(valid)} proxies",
+        "proxies:",
+    ]
+
+    count = 0
+    for proxy in valid:
+        yaml_line = proxy_to_clash_yaml(proxy, clean_for_kernel=True)
+        if yaml_line:
+            lines.append(f"    - {yaml_line}")
+            count += 1
+
+    content = "\n".join(lines) + "\n"
+    with open(filepath, "w", encoding="utf-8") as f:
+        f.write(content)
+
+    logger.info(f"Generated {filepath.name}: {count} proxies (Clash-kernel compatible)")
+    return filepath, count
+
+
 def proxy_to_uri(proxy: Dict) -> Optional[str]:
     """Convert a proxy dict to a standard proxy URI string."""
     ptype = str(proxy.get("type", "")).lower()
@@ -256,12 +295,13 @@ def proxy_to_uri(proxy: Dict) -> Optional[str]:
         return None
 
 
-def proxy_to_clash_yaml(proxy: Dict) -> Optional[str]:
+def proxy_to_clash_yaml(proxy: Dict, clean_for_kernel: bool = False) -> Optional[str]:
     """Convert a proxy dict to Clash inline YAML format.
 
     Follows the clash-subscription-format-spec:
     - Inline format: { name: '...', server: '...', port: 443, type: ss, ... }
-    - Nested fields as real YAML dicts (not Python repr strings)
+    - Nested fields as real YAML inline dicts (not Python repr strings)
+    - If clean_for_kernel=True, strips fields that cause Clash kernel errors
     """
     ptype = str(proxy.get("type", ""))
     name = _clean_name(proxy.get("name", ""))
@@ -271,18 +311,22 @@ def proxy_to_clash_yaml(proxy: Dict) -> Optional[str]:
     if not server or not port:
         return None
 
+    # Skip types not supported by Clash kernel
+    if clean_for_kernel and ptype.lower() in ("socks5", "http", "socks"):
+        return None
+
     parts = [
         f"name: '{name}'",
         f"server: '{server}'",
         f"port: {port}",
-        f"type: {ptype}",
+        f"type: '{ptype}'",
     ]
 
     if ptype in ("vmess", "vless"):
         parts.append(f"uuid: '{proxy.get('uuid', '')}'")
-        if proxy.get("alterId"):
-            parts.append(f"alterId: {proxy['alterId']}")
-        if proxy.get("cipher"):
+        alter_id = proxy.get("alterId", 0)
+        parts.append(f"alterId: {alter_id}")
+        if proxy.get("cipher") and ptype == "vmess":
             parts.append(f"cipher: '{proxy['cipher']}'")
         parts.append(f"tls: {str(proxy.get('tls', False)).lower()}")
         parts.append(f"skip-cert-verify: {str(proxy.get('skip-cert-verify', False)).lower()}")
@@ -304,18 +348,23 @@ def proxy_to_clash_yaml(proxy: Dict) -> Optional[str]:
             parts.append(f"network: '{network}'")
 
         # Transport opts — as real YAML inline dicts
-        for opt_key in ("ws-opts", "http-opts", "grpc-opts", "hysteria-opts", "tuic-opts"):
+        for opt_key in ("ws-opts", "http-opts", "grpc-opts"):
             if opt_key in proxy and proxy[opt_key]:
                 parts.append(f"{opt_key}: {_dict_to_yaml(proxy[opt_key])}")
 
     elif ptype == "trojan":
         parts.append(f"password: '{proxy.get('password', '')}'")
-        parts.append(f"sni: '{proxy.get('sni', proxy.get('servername', ''))}'")
-        parts.append(f"tls: {str(proxy.get('tls', True)).lower()}")
+        sni = proxy.get("sni", proxy.get("servername", ""))
+        if sni:
+            parts.append(f"sni: '{sni}'")
+        # Trojan always uses TLS; some kernels reject explicit tls: true
+        if not clean_for_kernel:
+            parts.append(f"tls: {str(proxy.get('tls', True)).lower()}")
         parts.append(f"skip-cert-verify: {str(proxy.get('skip-cert-verify', False)).lower()}")
         parts.append(f"udp: {str(proxy.get('udp', True)).lower()}")
-        if proxy.get("network"):
-            parts.append(f"network: '{proxy['network']}'")
+        network = proxy.get("network", "")
+        if network and network != "tcp":
+            parts.append(f"network: '{network}'")
         for opt_key in ("ws-opts", "grpc-opts"):
             if opt_key in proxy and proxy[opt_key]:
                 parts.append(f"{opt_key}: {_dict_to_yaml(proxy[opt_key])}")
@@ -327,7 +376,9 @@ def proxy_to_clash_yaml(proxy: Dict) -> Optional[str]:
 
     elif ptype == "hysteria2":
         parts.append(f"password: '{proxy.get('password', '')}'")
-        parts.append(f"sni: '{proxy.get('sni', proxy.get('servername', ''))}'")
+        sni = proxy.get("sni", proxy.get("servername", ""))
+        if sni:
+            parts.append(f"sni: '{sni}'")
         parts.append(f"skip-cert-verify: {str(proxy.get('skip-cert-verify', False)).lower()}")
         parts.append(f"udp: {str(proxy.get('udp', True)).lower()}")
         if proxy.get("obfs"):
@@ -335,7 +386,9 @@ def proxy_to_clash_yaml(proxy: Dict) -> Optional[str]:
             if proxy.get("obfs-password"):
                 parts.append(f"obfs-password: '{proxy['obfs-password']}'")
 
-    elif ptype == "socks5":
+    elif ptype in ("socks5", "http", "socks"):
+        if clean_for_kernel:
+            return None  # Not supported by Clash kernel
         parts.append(f"skip-cert-verify: {str(proxy.get('skip-cert-verify', False)).lower()}")
         parts.append(f"udp: {str(proxy.get('udp', True)).lower()}")
         if proxy.get("username"):
@@ -343,22 +396,27 @@ def proxy_to_clash_yaml(proxy: Dict) -> Optional[str]:
         if proxy.get("password"):
             parts.append(f"password: '{proxy['password']}'")
 
-    # SSR, hysteria, tuic — include known fields
     elif ptype == "ssr":
         parts.append(f"cipher: '{proxy.get('cipher', '')}'")
         parts.append(f"password: '{proxy.get('password', '')}'")
-        parts.append(f"protocol: '{proxy.get('protocol', '')}'")
-        parts.append(f"obfs: '{proxy.get('obfs', '')}'")
+        if proxy.get("protocol"):
+            parts.append(f"protocol: '{proxy['protocol']}'")
+        if proxy.get("obfs"):
+            parts.append(f"obfs: '{proxy['obfs']}'")
 
     elif ptype == "hysteria":
         parts.append(f"password: '{proxy.get('password', '')}'")
-        parts.append(f"sni: '{proxy.get('sni', '')}'")
+        sni = proxy.get("sni", "")
+        if sni:
+            parts.append(f"sni: '{sni}'")
         parts.append(f"skip-cert-verify: {str(proxy.get('skip-cert-verify', False)).lower()}")
 
     elif ptype == "tuic":
         parts.append(f"uuid: '{proxy.get('uuid', '')}'")
         parts.append(f"password: '{proxy.get('password', '')}'")
-        parts.append(f"sni: '{proxy.get('sni', '')}'")
+        sni = proxy.get("sni", "")
+        if sni:
+            parts.append(f"sni: '{sni}'")
         parts.append(f"skip-cert-verify: {str(proxy.get('skip-cert-verify', False)).lower()}")
 
     return "{ " + ", ".join(parts) + " }"
@@ -575,42 +633,53 @@ def _dict_to_yaml(d: Dict) -> str:
     return "{ " + ", ".join(parts) + " }"
 
 
-def _yaml_list(items: List[str]) -> str:
-    """Format a list of strings as Clash YAML inline list."""
-    items_clean = [f"'{_clean_name(i)}'" for i in items if i]
-    if len(items_clean) > 20:
-        # For large lists, only show key ones + "手动选择" for the rest
-        return "[" + ", ".join(items_clean[:20]) + "]"
-    return "[" + ", ".join(items_clean) + "]"
+def _yaml_list(items: List[str], max_items: int = 20) -> str:
+    """Format a list of strings as Clash YAML inline list.
+
+    Limits to max_items to keep url-test/fallback groups performant.
+    """
+    clean = [_clean_name(i) for i in items if i]
+    limited = clean[:max_items]
+    return "[" + ", ".join([f"'{n}'" for n in limited]) + "]"
 
 
 def _generate_proxy_groups(node_names: List[str]) -> List[str]:
-    """Generate Clash proxy-groups section."""
-    names = [_clean_name(n) for n in node_names if n]
+    """Generate Clash proxy-groups section with valid YAML syntax."""
+    clean_names = [_clean_name(n) for n in node_names if n]
+
+    # url-test: first 20 nodes for auto selection
+    auto_proxies = _yaml_list(clean_names, max_items=20)
+    # fallback: first 20 nodes
+    fb_proxies = _yaml_list(clean_names, max_items=20)
+    # select: special groups + first 20 nodes
+    select_names = ["'🚀 自动选择'", "'🔄 故障转移'"]
+    for n in clean_names[:20]:
+        select_names.append(f"'{n}'")
+    select_proxies = "[" + ", ".join(select_names) + "]"
 
     lines = [
         "proxy-groups:",
-        f"    - {{ name: 🚀 自动选择, type: url-test, proxies: {_yaml_list(names)}, url: 'http://www.gstatic.com/generate_204', interval: 300 }}",
-        f"    - {{ name: 🔄 故障转移, type: fallback, proxies: {_yaml_list(names)}, url: 'http://www.gstatic.com/generate_204', interval: 600 }}",
-        f"    - {{ name: 🌍 手动选择, type: select, proxies: ['🚀 自动选择', '🔄 故障转移'] + {_yaml_list(names)} }}",
+        f"    - {{ name: '🚀 自动选择', type: url-test, proxies: {auto_proxies}, url: 'http://www.gstatic.com/generate_204', interval: 300 }}",
+        f"    - {{ name: '🔄 故障转移', type: fallback, proxies: {fb_proxies}, url: 'http://www.gstatic.com/generate_204', interval: 600 }}",
+        f"    - {{ name: '🌍 手动选择', type: select, proxies: {select_proxies} }}",
     ]
     return lines
 
 
 def _generate_rules() -> List[str]:
-    """Generate Clash rules section."""
+    """Generate Clash rules section with properly quoted values."""
     return [
         "rules:",
-        "    - DOMAIN-KEYWORD,google,🚀 自动选择",
-        "    - DOMAIN-SUFFIX,google.com,🚀 自动选择",
-        "    - DOMAIN-SUFFIX,googleapis.com,🚀 自动选择",
-        "    - DOMAIN-KEYWORD,youtube,🚀 自动选择",
-        "    - DOMAIN-SUFFIX,youtube.com,🚀 自动选择",
-        "    - DOMAIN-SUFFIX,twitter.com,🚀 自动选择",
-        "    - DOMAIN-SUFFIX,facebook.com,🚀 自动选择",
-        "    - DOMAIN-SUFFIX,instagram.com,🚀 自动选择",
-        "    - DOMAIN-SUFFIX,github.com,🚀 自动选择",
-        "    - DOMAIN-SUFFIX,openai.com,🚀 自动选择",
-        "    - GEOIP,CN,DIRECT",
-        "    - MATCH,🚀 自动选择",
+        "    - 'DOMAIN-KEYWORD,google,🚀 自动选择'",
+        "    - 'DOMAIN-SUFFIX,google.com,🚀 自动选择'",
+        "    - 'DOMAIN-SUFFIX,googleapis.com,🚀 自动选择'",
+        "    - 'DOMAIN-KEYWORD,youtube,🚀 自动选择'",
+        "    - 'DOMAIN-SUFFIX,youtube.com,🚀 自动选择'",
+        "    - 'DOMAIN-SUFFIX,twitter.com,🚀 自动选择'",
+        "    - 'DOMAIN-SUFFIX,facebook.com,🚀 自动选择'",
+        "    - 'DOMAIN-SUFFIX,instagram.com,🚀 自动选择'",
+        "    - 'DOMAIN-SUFFIX,github.com,🚀 自动选择'",
+        "    - 'DOMAIN-SUFFIX,openai.com,🚀 自动选择'",
+        "    - 'GEOIP,CN,DIRECT'",
+        "    - 'MATCH,🚀 自动选择'",
     ]
