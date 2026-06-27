@@ -1,4 +1,4 @@
-# Free Node Aggregator — Provider Format | Updated: 2026-06-28 00:32:49 Beijing Time
+# Free Node Aggregator — Provider Format | Updated: 2026-06-28 00:44:49 Beijing Time
 # Proxies: L1=6, L2=14, L3=0, Total=463
 
 mixed-port: 7890
@@ -28,9 +28,9 @@ proxy-providers:
             interval: 300
 
 proxy-groups:
-    - { name: 🚀 自动选择, type: url-test, proxies: ['每天更新，请加电报群防止失联', '电报群：https://t.me/vvkj11', '日期：06-27', '免费VPN：https://tt.vg/OWeaF', '🏳️_未知_5', '🏳️_未知_6', '🏳️_未知_7', '🏳️_未知_8', '🏳️_未知_9', '🏳️_未知_10', '🇰🇷_韩国_11', '🇺🇸_美国_12', '🏳️_未知_13', '🏳️_未知_14', '🇮🇳_印度_16', '🇺🇸_美国_19', '🇸🇬_新加坡_20', '🇸🇬_新加坡_21', '🇸🇬_新加坡_22', '🇺🇸_美国_23'], url: 'http://www.gstatic.com/generate_204', interval: 300 }
-    - { name: 🔄 故障转移, type: fallback, proxies: ['每天更新，请加电报群防止失联', '电报群：https://t.me/vvkj11', '日期：06-27', '免费VPN：https://tt.vg/OWeaF', '🏳️_未知_5', '🏳️_未知_6', '🏳️_未知_7', '🏳️_未知_8', '🏳️_未知_9', '🏳️_未知_10', '🇰🇷_韩国_11', '🇺🇸_美国_12', '🏳️_未知_13', '🏳️_未知_14', '🇮🇳_印度_16', '🇺🇸_美国_19', '🇸🇬_新加坡_20', '🇸🇬_新加坡_21', '🇸🇬_新加坡_22', '🇺🇸_美国_23'], url: 'http://www.gstatic.com/generate_204', interval: 600 }
-    - { name: 🌍 手动选择, type: select, proxies: ['🚀 自动选择', '🔄 故障转移', '🌍 手动选择', '每天更新，请加电报群防止失联', '电报群：https://t.me/vvkj11', '日期：06-27', '免费VPN：https://tt.vg/OWeaF', '🏳️_未知_5', '🏳️_未知_6', '🏳️_未知_7', '🏳️_未知_8', '🏳️_未知_9', '🏳️_未知_10', '🇰🇷_韩国_11', '🇺🇸_美国_12', '🏳️_未知_13', '🏳️_未知_14', '🇮🇳_印度_16', '🇺🇸_美国_19', '🇸🇬_新加坡_20'] }
+    - { name: 🚀 自动选择, type: url-test, proxies: ['每天更新，请加电报群防止失联', '电报群：https://t.me/vvkj11', '日期：06-27', '免费VPN：https://tt.vg/OWeaF', '美国/San Francisco/United States/San Francisco-3', '🏳️_未知_6', '🏳️_未知_7', '🏳️_未知_8', '🏳️_未知_9', '🏳️_未知_10', '🇰🇷_韩国_11', '🇺🇸_美国_12', '🏳️_未知_13', '🏳️_未知_14', '🇮🇳_印度_16', '🇺🇸_美国_19', '🇸🇬_新加坡_20', '🇸🇬_新加坡_21', '🇸🇬_新加坡_22', '🇺🇸_美国_23'], url: 'http://www.gstatic.com/generate_204', interval: 300 }
+    - { name: 🔄 故障转移, type: fallback, proxies: ['每天更新，请加电报群防止失联', '电报群：https://t.me/vvkj11', '日期：06-27', '免费VPN：https://tt.vg/OWeaF', '美国/San Francisco/United States/San Francisco-3', '🏳️_未知_6', '🏳️_未知_7', '🏳️_未知_8', '🏳️_未知_9', '🏳️_未知_10', '🇰🇷_韩国_11', '🇺🇸_美国_12', '🏳️_未知_13', '🏳️_未知_14', '🇮🇳_印度_16', '🇺🇸_美国_19', '🇸🇬_新加坡_20', '🇸🇬_新加坡_21', '🇸🇬_新加坡_22', '🇺🇸_美国_23'], url: 'http://www.gstatic.com/generate_204', interval: 600 }
+    - { name: 🌍 手动选择, type: select, proxies: ['🚀 自动选择', '🔄 故障转移', '🌍 手动选择', '每天更新，请加电报群防止失联', '电报群：https://t.me/vvkj11', '日期：06-27', '免费VPN：https://tt.vg/OWeaF', '美国/San Francisco/United States/San Francisco-3', '🏳️_未知_6', '🏳️_未知_7', '🏳️_未知_8', '🏳️_未知_9', '🏳️_未知_10', '🇰🇷_韩国_11', '🇺🇸_美国_12', '🏳️_未知_13', '🏳️_未知_14', '🇮🇳_印度_16', '🇺🇸_美国_19', '🇸🇬_新加坡_20'] }
 
 rules:
     - DOMAIN-KEYWORD,google,🚀 自动选择
