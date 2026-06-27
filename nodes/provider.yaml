@@ -1,4 +1,4 @@
-# Free Node Aggregator — Provider Format | Updated: 2026-06-28 00:44:49 Beijing Time
+# Free Node Aggregator — Provider Format | Updated: 2026-06-28 01:04:22 Beijing Time
 # Proxies: L1=6, L2=14, L3=0, Total=463
 
 mixed-port: 7890
@@ -28,20 +28,20 @@ proxy-providers:
             interval: 300
 
 proxy-groups:
-    - { name: 🚀 自动选择, type: url-test, proxies: ['每天更新，请加电报群防止失联', '电报群：https://t.me/vvkj11', '日期：06-27', '免费VPN：https://tt.vg/OWeaF', '美国/San Francisco/United States/San Francisco-3', '🏳️_未知_6', '🏳️_未知_7', '🏳️_未知_8', '🏳️_未知_9', '🏳️_未知_10', '🇰🇷_韩国_11', '🇺🇸_美国_12', '🏳️_未知_13', '🏳️_未知_14', '🇮🇳_印度_16', '🇺🇸_美国_19', '🇸🇬_新加坡_20', '🇸🇬_新加坡_21', '🇸🇬_新加坡_22', '🇺🇸_美国_23'], url: 'http://www.gstatic.com/generate_204', interval: 300 }
-    - { name: 🔄 故障转移, type: fallback, proxies: ['每天更新，请加电报群防止失联', '电报群：https://t.me/vvkj11', '日期：06-27', '免费VPN：https://tt.vg/OWeaF', '美国/San Francisco/United States/San Francisco-3', '🏳️_未知_6', '🏳️_未知_7', '🏳️_未知_8', '🏳️_未知_9', '🏳️_未知_10', '🇰🇷_韩国_11', '🇺🇸_美国_12', '🏳️_未知_13', '🏳️_未知_14', '🇮🇳_印度_16', '🇺🇸_美国_19', '🇸🇬_新加坡_20', '🇸🇬_新加坡_21', '🇸🇬_新加坡_22', '🇺🇸_美国_23'], url: 'http://www.gstatic.com/generate_204', interval: 600 }
-    - { name: 🌍 手动选择, type: select, proxies: ['🚀 自动选择', '🔄 故障转移', '🌍 手动选择', '每天更新，请加电报群防止失联', '电报群：https://t.me/vvkj11', '日期：06-27', '免费VPN：https://tt.vg/OWeaF', '美国/San Francisco/United States/San Francisco-3', '🏳️_未知_6', '🏳️_未知_7', '🏳️_未知_8', '🏳️_未知_9', '🏳️_未知_10', '🇰🇷_韩国_11', '🇺🇸_美国_12', '🏳️_未知_13', '🏳️_未知_14', '🇮🇳_印度_16', '🇺🇸_美国_19', '🇸🇬_新加坡_20'] }
+    - { name: 🚀 自动选择, type: url-test, proxies: ['🇺🇸US-37.19.198.236-0104 | 292.295MB', '🇺🇸US-37.19.198.244-0103 | 274.612MB', '🇺🇸US-37.19.198.243-0108 | 252.727MB', '🇺🇸US-37.19.198.160-0102 | 221.317MB', '🇨🇦CA-137.184.174.93-0097 | 92.933MB', '🇬🇧GB-146.70.61.37-0211 | 91.682MB', '🇬🇧GB-82.38.31.191-0087 | 88.662MB', '🇺🇸US-156.146.38.167-0077 | 88.089MB', '🇳🇱NL-193.29.139.204-0101 | 86.768MB', '🇬🇧GB-82.38.31.202-6008 | 86.735MB', '🇺🇸US-156.146.38.169-0078 | 86.347MB', '🇬🇧GB-82.38.31.149-0098 | 84.488MB', '🇬🇧GB-82.38.31.213-0143 | 84.15MB', '🇬🇧GB-82.38.31.184-0089 | 83.513MB', '🇬🇧GB-82.38.31.189-0096 | 81.456MB', '🇳🇱NL-109.201.152.181-0110 | 81.0MB', '🇬🇧GB-82.38.31.211-0095 | 80.773MB', '🇬🇧GB-82.38.31.192-6024 | 79.443MB', '🇬🇧GB-82.38.31.179-0094 | 76.909MB', '🇳🇱NL-193.29.139.151-0105 | 71.849MB'], url: 'http://www.gstatic.com/generate_204', interval: 300 }
+    - { name: 🔄 故障转移, type: fallback, proxies: ['🇺🇸US-37.19.198.236-0104 | 292.295MB', '🇺🇸US-37.19.198.244-0103 | 274.612MB', '🇺🇸US-37.19.198.243-0108 | 252.727MB', '🇺🇸US-37.19.198.160-0102 | 221.317MB', '🇨🇦CA-137.184.174.93-0097 | 92.933MB', '🇬🇧GB-146.70.61.37-0211 | 91.682MB', '🇬🇧GB-82.38.31.191-0087 | 88.662MB', '🇺🇸US-156.146.38.167-0077 | 88.089MB', '🇳🇱NL-193.29.139.204-0101 | 86.768MB', '🇬🇧GB-82.38.31.202-6008 | 86.735MB', '🇺🇸US-156.146.38.169-0078 | 86.347MB', '🇬🇧GB-82.38.31.149-0098 | 84.488MB', '🇬🇧GB-82.38.31.213-0143 | 84.15MB', '🇬🇧GB-82.38.31.184-0089 | 83.513MB', '🇬🇧GB-82.38.31.189-0096 | 81.456MB', '🇳🇱NL-109.201.152.181-0110 | 81.0MB', '🇬🇧GB-82.38.31.211-0095 | 80.773MB', '🇬🇧GB-82.38.31.192-6024 | 79.443MB', '🇬🇧GB-82.38.31.179-0094 | 76.909MB', '🇳🇱NL-193.29.139.151-0105 | 71.849MB'], url: 'http://www.gstatic.com/generate_204', interval: 600 }
+    - { name: 🌍 手动选择, type: select, proxies: ['🚀 自动选择', '🔄 故障转移', '🌍 手动选择', '🇺🇸US-37.19.198.236-0104 | 292.295MB', '🇺🇸US-37.19.198.244-0103 | 274.612MB', '🇺🇸US-37.19.198.243-0108 | 252.727MB', '🇺🇸US-37.19.198.160-0102 | 221.317MB', '🇨🇦CA-137.184.174.93-0097 | 92.933MB', '🇬🇧GB-146.70.61.37-0211 | 91.682MB', '🇬🇧GB-82.38.31.191-0087 | 88.662MB', '🇺🇸US-156.146.38.167-0077 | 88.089MB', '🇳🇱NL-193.29.139.204-0101 | 86.768MB', '🇬🇧GB-82.38.31.202-6008 | 86.735MB', '🇺🇸US-156.146.38.169-0078 | 86.347MB', '🇬🇧GB-82.38.31.149-0098 | 84.488MB', '🇬🇧GB-82.38.31.213-0143 | 84.15MB', '🇬🇧GB-82.38.31.184-0089 | 83.513MB', '🇬🇧GB-82.38.31.189-0096 | 81.456MB', '🇳🇱NL-109.201.152.181-0110 | 81.0MB', '🇬🇧GB-82.38.31.211-0095 | 80.773MB'] }
 
 rules:
-    - DOMAIN-KEYWORD,google,🚀 自动选择
-    - DOMAIN-SUFFIX,google.com,🚀 自动选择
-    - DOMAIN-SUFFIX,googleapis.com,🚀 自动选择
-    - DOMAIN-KEYWORD,youtube,🚀 自动选择
-    - DOMAIN-SUFFIX,youtube.com,🚀 自动选择
-    - DOMAIN-SUFFIX,twitter.com,🚀 自动选择
-    - DOMAIN-SUFFIX,facebook.com,🚀 自动选择
-    - DOMAIN-SUFFIX,instagram.com,🚀 自动选择
-    - DOMAIN-SUFFIX,github.com,🚀 自动选择
-    - DOMAIN-SUFFIX,openai.com,🚀 自动选择
-    - GEOIP,CN,DIRECT
-    - MATCH,🚀 自动选择
+    - 'DOMAIN-KEYWORD,google,🚀 自动选择'
+    - 'DOMAIN-SUFFIX,google.com,🚀 自动选择'
+    - 'DOMAIN-SUFFIX,googleapis.com,🚀 自动选择'
+    - 'DOMAIN-KEYWORD,youtube,🚀 自动选择'
+    - 'DOMAIN-SUFFIX,youtube.com,🚀 自动选择'
+    - 'DOMAIN-SUFFIX,twitter.com,🚀 自动选择'
+    - 'DOMAIN-SUFFIX,facebook.com,🚀 自动选择'
+    - 'DOMAIN-SUFFIX,instagram.com,🚀 自动选择'
+    - 'DOMAIN-SUFFIX,github.com,🚀 自动选择'
+    - 'DOMAIN-SUFFIX,openai.com,🚀 自动选择'
+    - 'GEOIP,CN,DIRECT'
+    - 'MATCH,🚀 自动选择'
