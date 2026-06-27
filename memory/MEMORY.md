@@ -1,0 +1,3 @@
+- [aggregator-local-project](aggregator-local-project.md) — 免费节点订阅本地化 Docker 部署完整记录
+- [webfetch-preflight-fix](webfetch-preflight-fix.md) — WebFetch 域名预检被墙：skipWebFetchPreflight 配置
+- [clash-subscription-format-spec](clash-subscription-format-spec.md) — OpenClash/Hiddify 兼容的 Clash 订阅 YAML 格式规范（可跨项目复用）

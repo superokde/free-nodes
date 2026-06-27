@@ -1,0 +1,71 @@
+# Free Nodes Subscription Sources
+# credit: 1=L1 (domestic direct, highest trust)
+#         2=L2 (CDN/aggregated, medium trust)
+#         3=L3 (overseas direct, lower trust for China accessibility)
+
+sources:
+  # ====== L1: Domestic Direct Sources ======
+  - name: xrayvip-free-yaml
+    url: https://www.xrayvip.com/free.yaml
+    format: clash
+    credit: 1
+    enabled: false  # Uses proxy-provider format, no direct proxies
+
+  - name: xrayvip-free-txt
+    url: https://www.xrayvip.com/free.txt
+    format: v2ray
+    credit: 1
+    enabled: true
+
+  # ====== L2: Aggregated/Curated Sources ======
+  - name: mahdibland-v2ray
+    url: https://raw.githubusercontent.com/mahdibland/V2RayAggregator/master/Eternity.yml
+    format: clash
+    credit: 2
+    enabled: true
+
+  - name: free18-v2ray-clash
+    url: https://raw.githubusercontent.com/free18/v2ray/main/c.yaml
+    format: clash
+    credit: 2
+    enabled: true
+
+  - name: free18-v2ray-txt
+    url: https://raw.githubusercontent.com/free18/v2ray/main/v.txt
+    format: v2ray
+    credit: 2
+    enabled: true
+
+  - name: awesome-vpn-clash
+    url: https://raw.githubusercontent.com/awesome-vpn/awesome-vpn/master/clash.yaml
+    format: clash
+    credit: 2
+    enabled: true
+
+  - name: awesome-vpn-all
+    url: https://raw.githubusercontent.com/awesome-vpn/awesome-vpn/master/all
+    format: base64
+    credit: 2
+    enabled: true
+
+  - name: ermaozi-subscribe
+    url: https://raw.githubusercontent.com/ermaozi/get_subscribe/main/subscribe/v2ray.txt
+    format: base64
+    credit: 2
+    enabled: true
+
+  - name: lhw828-clashnode
+    url: https://raw.githubusercontent.com/lhw828/clashnode/main/Eternity.yml
+    format: clash
+    credit: 2
+    enabled: false  # Uses proxy-provider format
+
+# Settings
+settings:
+  request_timeout: 30
+  max_retries: 3
+  concurrency: 5          # parallel source fetching
+  gh_proxies:             # CDN fallback for GH raw URLs
+    - https://cdn.jsdmirror.com
+    - https://ghp.ci
+    - https://gh-proxy.com

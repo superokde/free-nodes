@@ -1,0 +1,39 @@
+# Blacklisted IPs, CIDRs, and domains known to be blocked by GFW
+# or associated with malicious/spam nodes.
+
+ip_cidr:
+  # - 10.0.0.0/8           # example: private range
+  # - 192.168.0.0/16       # example: private range
+  # Add known blocked IP ranges here
+
+ip_patterns:
+  # Single IPs or simple patterns (e.g. known honeypot IPs)
+
+domains:
+  # Domains known to be blocked or suspicious
+
+ports:
+  # Ports frequently blocked by GFW (already uncommon in free nodes)
+  - 25     # SMTP
+  - 137    # NetBIOS
+  - 138    # NetBIOS
+  - 139    # NetBIOS
+  - 445    # SMB
+
+# Node name patterns to exclude (case-insensitive)
+name_exclude_patterns:
+  - "127.0.0.1"
+  - "localhost"
+  - "0.0.0.0"
+  - "example"
+  - "test_only"
+  - "127.0.0.1"
+
+# Minimum required fields per protocol
+required_fields:
+  vmess: [server, port, uuid]
+  vless: [server, port, uuid]
+  trojan: [server, port, password]
+  ss: [server, port, cipher, password]
+  hysteria2: [server, port, password]
+  socks5: [server, port]

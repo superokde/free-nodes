@@ -1,0 +1,47 @@
+# Free Node Aggregator — Provider Format | Updated: 2026-06-28 00:32:49 Beijing Time
+# Proxies: L1=6, L2=14, L3=0, Total=463
+
+mixed-port: 7890
+allow-lan: false
+bind-address: '*'
+mode: rule
+log-level: info
+external-controller: '127.0.0.1:9090'
+unified-delay: true
+tcp-concurrent: true
+
+dns:
+    enable: true
+    enhanced-mode: fake-ip
+    nameserver: [223.5.5.5, 119.29.29.29, 114.114.114.114]
+    fallback: [1.1.1.1, 8.8.8.8]
+
+proxy-providers:
+    all-nodes:
+        type: http
+        url: "PLACEHOLDER_ALL_YAML_URL"
+        path: ./all-nodes.yaml
+        interval: 86400
+        health-check:
+            enable: true
+            url: http://www.gstatic.com/generate_204
+            interval: 300
+
+proxy-groups:
+    - { name: 🚀 自动选择, type: url-test, proxies: ['每天更新，请加电报群防止失联', '电报群：https://t.me/vvkj11', '日期：06-27', '免费VPN：https://tt.vg/OWeaF', '🏳️_未知_5', '🏳️_未知_6', '🏳️_未知_7', '🏳️_未知_8', '🏳️_未知_9', '🏳️_未知_10', '🇰🇷_韩国_11', '🇺🇸_美国_12', '🏳️_未知_13', '🏳️_未知_14', '🇮🇳_印度_16', '🇺🇸_美国_19', '🇸🇬_新加坡_20', '🇸🇬_新加坡_21', '🇸🇬_新加坡_22', '🇺🇸_美国_23'], url: 'http://www.gstatic.com/generate_204', interval: 300 }
+    - { name: 🔄 故障转移, type: fallback, proxies: ['每天更新，请加电报群防止失联', '电报群：https://t.me/vvkj11', '日期：06-27', '免费VPN：https://tt.vg/OWeaF', '🏳️_未知_5', '🏳️_未知_6', '🏳️_未知_7', '🏳️_未知_8', '🏳️_未知_9', '🏳️_未知_10', '🇰🇷_韩国_11', '🇺🇸_美国_12', '🏳️_未知_13', '🏳️_未知_14', '🇮🇳_印度_16', '🇺🇸_美国_19', '🇸🇬_新加坡_20', '🇸🇬_新加坡_21', '🇸🇬_新加坡_22', '🇺🇸_美国_23'], url: 'http://www.gstatic.com/generate_204', interval: 600 }
+    - { name: 🌍 手动选择, type: select, proxies: ['🚀 自动选择', '🔄 故障转移', '🌍 手动选择', '每天更新，请加电报群防止失联', '电报群：https://t.me/vvkj11', '日期：06-27', '免费VPN：https://tt.vg/OWeaF', '🏳️_未知_5', '🏳️_未知_6', '🏳️_未知_7', '🏳️_未知_8', '🏳️_未知_9', '🏳️_未知_10', '🇰🇷_韩国_11', '🇺🇸_美国_12', '🏳️_未知_13', '🏳️_未知_14', '🇮🇳_印度_16', '🇺🇸_美国_19', '🇸🇬_新加坡_20'] }
+
+rules:
+    - DOMAIN-KEYWORD,google,🚀 自动选择
+    - DOMAIN-SUFFIX,google.com,🚀 自动选择
+    - DOMAIN-SUFFIX,googleapis.com,🚀 自动选择
+    - DOMAIN-KEYWORD,youtube,🚀 自动选择
+    - DOMAIN-SUFFIX,youtube.com,🚀 自动选择
+    - DOMAIN-SUFFIX,twitter.com,🚀 自动选择
+    - DOMAIN-SUFFIX,facebook.com,🚀 自动选择
+    - DOMAIN-SUFFIX,instagram.com,🚀 自动选择
+    - DOMAIN-SUFFIX,github.com,🚀 自动选择
+    - DOMAIN-SUFFIX,openai.com,🚀 自动选择
+    - GEOIP,CN,DIRECT
+    - MATCH,🚀 自动选择
