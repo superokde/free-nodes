@@ -33,8 +33,7 @@ jobs:
       - name: Collect and aggregate nodes
         env:
           TZ: Asia/Shanghai
-        run: |
-          python main.py ${{ inputs.verbose && '--verbose' || '' }}
+        run: python main.py
 
       - name: Commit and push updates
         run: |
