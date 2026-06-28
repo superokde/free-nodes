@@ -1,71 +1,53 @@
 # Free Nodes Subscription Sources
-# credit: 1=L1 (domestic direct, highest trust)
-#         2=L2 (CDN/aggregated, medium trust)
-#         3=L3 (overseas direct, lower trust for China accessibility)
+# 策略: 精选源站已 LiteSpeedTest/SubsCheck 预过滤的输出（Top200等）
+#       不使用原始全量 dump，避免大量死节点
+# 海外 GH Actions 环境 → raw.githubusercontent.com 直连
+# 国内用户订阅 → 走 CDN 加速（ghp.ci / cdn.jsdmirror.com）
+#
+# credit: 1=L1 2=L2
 
 sources:
-  # ====== L1: Domestic Direct Sources ======
-  - name: xrayvip-free-yaml
-    url: https://www.xrayvip.com/free.yaml
-    format: clash
-    credit: 1
-    enabled: false  # Uses proxy-provider format, no direct proxies
-
-  - name: xrayvip-free-txt
+  # ====== L1: 国内独立站 ======
+  - name: xrayvip
     url: https://www.xrayvip.com/free.txt
     format: v2ray
     credit: 1
     enabled: true
 
-  # ====== L2: Aggregated/Curated Sources ======
-  - name: mahdibland-v2ray
+  # ====== L2: 精选聚合源（已测速过滤） ======
+  # mahdibland: LiteSpeedTest Top200 精选（非 sub_merge.txt 全量 dump）
+  - name: mahdibland-top200
     url: https://raw.githubusercontent.com/mahdibland/V2RayAggregator/master/Eternity.yml
     format: clash
     credit: 2
     enabled: true
 
-  - name: free18-v2ray-clash
+  # free18: 长期维护精选 Clash + V2Ray
+  - name: free18-clash
     url: https://raw.githubusercontent.com/free18/v2ray/main/c.yaml
     format: clash
     credit: 2
     enabled: true
 
-  - name: free18-v2ray-txt
+  - name: free18-txt
     url: https://raw.githubusercontent.com/free18/v2ray/main/v.txt
     format: v2ray
     credit: 2
     enabled: true
 
-  - name: awesome-vpn-clash
-    url: https://raw.githubusercontent.com/awesome-vpn/awesome-vpn/master/clash.yaml
-    format: clash
-    credit: 2
-    enabled: true
-
-  - name: awesome-vpn-all
-    url: https://raw.githubusercontent.com/awesome-vpn/awesome-vpn/master/all
-    format: base64
-    credit: 2
-    enabled: true
-
-  - name: ermaozi-subscribe
+  # ermaozi: 9k stars 长期维护
+  - name: ermaozi
     url: https://raw.githubusercontent.com/ermaozi/get_subscribe/main/subscribe/v2ray.txt
     format: base64
     credit: 2
     enabled: true
 
-  - name: lhw828-clashnode
-    url: https://raw.githubusercontent.com/lhw828/clashnode/main/Eternity.yml
-    format: clash
-    credit: 2
-    enabled: false  # Uses proxy-provider format
-
 # Settings
 settings:
   request_timeout: 30
   max_retries: 3
-  concurrency: 5          # parallel source fetching
-  gh_proxies:             # CDN fallback for GH raw URLs
+  concurrency: 5
+  gh_proxies:
     - https://cdn.jsdmirror.com
     - https://ghp.ci
     - https://gh-proxy.com
